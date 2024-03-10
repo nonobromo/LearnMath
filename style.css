@@ -154,19 +154,19 @@ h3 {
     }
 
     .calc-box button {
-        width: 70px;
+        width: 90px;
         font-size: 16px;
         height: 30px;
     }
 
     .calc-box p {
-        width: 70px;
+        width: 90px;
         font-size: 20px;
         height: 30px;
     }
 
     .calc-box input {
-        width: 70px;
+        width: 90px;
         height: 30px;
         font-size: 24px;
     }
