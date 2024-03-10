@@ -141,7 +141,7 @@ h3 {
     }
 
     .calc-area {
-        width: 350px;
+        width: 300px;
         margin: auto;
         display: flex;
     justify-content: space-around;
@@ -149,23 +149,23 @@ h3 {
     }
 
     .calc-box {
-        width: 350px;
+        width: 300px;
     }
 
     .calc-box button {
-        width: 100px;
-        font-size: 24px;
+        width: 70px;
+        font-size: 16px;
         height: 30px;
     }
 
     .calc-box p {
-        width: 110px;
-        font-size: 24px;
+        width: 70px;
+        font-size: 20px;
         height: 30px;
     }
 
     .calc-box input {
-        width: 100px;
+        width: 70px;
         height: 30px;
         font-size: 24px;
     }
