@@ -17,6 +17,7 @@ let showCorrect;
 
 let signOp;
 
+
 function myFunc() {
     const j = Math.floor(Math.random() * answers.length);
     const k = Math.floor(Math.random() * opts.length)
@@ -52,12 +53,13 @@ btnCheck.addEventListener("click", function () {
         showCorrect = setTimeout(statusUpdate, 1500);
         score = 0;
     }
-    console.log(totalscore);
     generateResult(input);
     myFunc();
     document.getElementById("submit").value = "";
-    document.getElementById("score-show").innerHTML = "Your Score is " + totalscore;
+    document.getElementById("score-show").innerHTML = totalscore;
+    saveScore();
 });
+
 
 
 function generateResult() {
@@ -68,15 +70,17 @@ function generateResult() {
     divAdd.style.textAlign = "left";
     resultAdd.appendChild(divAdd);
 
-    const probelm = document.createElement("h3");
-    const correct = document.createElement("h3");
-    const givenAnswer = document.createElement("h3");
-    const scoreGiven = document.createElement("h3");
+    const probelm = document.createElement("span");
+    const correct = document.createElement("span");
+    const givenAnswer = document.createElement("span");
+    const scoreGiven = document.createElement("span");
 
     probelm.innerHTML = num1 + signOp + num2;
     correct.innerHTML = result;
     givenAnswer.innerHTML = input;
     scoreGiven.innerHTML = score;
+
+
 
     if (isCorrect === true) {
         givenAnswer.style.color = "#2BD400";
@@ -85,17 +89,40 @@ function generateResult() {
     }
 
     if (input === "") {
-        givenAnswer.innerHTML = "Empty";
+        givenAnswer.innerHTML = "Empty ";
     }
+
 
     divAdd.appendChild(probelm);
     divAdd.appendChild(correct);
     divAdd.appendChild(givenAnswer);
-    divAdd.appendChild(scoreGiven)
+    divAdd.appendChild(scoreGiven);
+
 }
+
 
 function statusUpdate() {
     btnCheck.innerHTML = "Check";
     btnCheck.style.backgroundColor = "#0019FF";
     btnCheck.style.transition = "400ms";
 }
+
+
+let gameHistory = [];
+
+function saveScore() {
+    const score = +document.querySelector("#score-show").innerHTML;
+    localStorage.setItem('score', JSON.stringify(score));
+
+
+}
+
+function init() {
+    if (localStorage.score) {
+        const scores = JSON.parse(localStorage.score);
+
+        document.querySelector("#score-show").innerHTML = "Your last score was " + scores;
+    }
+
+}
+

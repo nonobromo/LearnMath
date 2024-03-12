@@ -110,12 +110,14 @@ body {
     margin-top: 40px;
 }
 
-h3 {
+h3,
+span {
     width: 300px;
     font-size: 1.5rem;
     margin-top: 20px;
     text-align: center;
 }
+
 
 .result-add {
     width: 1200px;
@@ -126,7 +128,7 @@ h3 {
     margin-top: 20px;
 }
 
-@media screen and (min-width:280px) and (max-width:1300px) {
+@media screen and (min-width:280px) and (max-width:1200px) {
 
     .container {
         width: 80vw;
@@ -145,8 +147,8 @@ h3 {
         width: 300px;
         margin: auto;
         display: flex;
-    justify-content: space-around;
-    align-items: center;
+        justify-content: space-around;
+        align-items: center;
     }
 
     .calc-box {
