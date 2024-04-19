@@ -44,6 +44,27 @@ body {
     border-radius: 12px;
 }
 
+.operator-area {
+    width: 400px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.operator-area>label {
+    font-size: 1.5em;
+}
+
+.operator-area>select {
+    width: 50px;
+    font-size: 1.5em;
+}
+
+body>div>div.calc-area>div.operator-area>select:nth-child(4) {
+    width: 75px;
+}
+
 .calc-box {
     width: 1200px;
     height: 100px;

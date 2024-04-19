@@ -8,12 +8,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body onload="init()">
+<body>
     <div class=" container">
         <div class="heading">
             <h1>Learn Math</h1>
         </div>
         <div class="calc-area">
+            <div class="operator-area">
+                <label for="">Operator</label>
+                <select id="operator" oninput="myFunc()">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                </select>
+                <label for="">Number Range</label>
+                <select id="range" oninput="pickRange()">
+                    <option>1-5</option>
+                    <option>5-10</option>
+                    <option>10-15</option>
+                    <option>15-20</option>
+                </select>
+            </div>
             <div class="calc-box">
                 <button id="btn">Check</button>
                 <input type="number" id="submit">
@@ -39,6 +55,7 @@
 
         </div>
     </div>
+    <script src="problems.js"></script>
     <script src="script.js"></script>
 </body>
 

@@ -1,8 +1,5 @@
-const answers = [
-    [1, 1], [2, 2], [4, 4], [3, 2], [6, 12], [5, 7], [18, 12], [17, 17], [24, 16], [7, 8], [12, 7], [11, 13], [15, 12], [24, 32], [25, 15], [35, 45], [65, 35], [19, 19], [16, 16], [15, 15][24, 24], [27, 35], [9, 5], [18, 19], [31, 45], [3, 3], [2, 3]
-];
 
-const opts = ["+", "-"]
+
 
 const question = document.querySelector("#show-qst");
 
@@ -12,25 +9,53 @@ let totalscore = 0;
 let num1 = 0;
 let num2 = 0;
 
+
+
 let isCorrect = false;
 let showCorrect;
 
 let signOp;
 
+let questions = [];
+
+let operator = document.getElementById("operator");
+let rangeCheck = document.getElementById("range");
+
+
+
+function pickRange() {
+    if (rangeCheck.value === "1-5") {
+        questions = questions = [...range1];
+    } else if (rangeCheck.value === "5-10") {
+        questions = questions = [...range2];
+    } else if (rangeCheck === "10-15") {
+        questions = questions.value = [...range3];
+    } else if (rangeCheck.value === "15-20") {
+        questions = questions = [...range4];
+    }
+    myFunc()
+}
+
+
+
 
 function myFunc() {
-    const j = Math.floor(Math.random() * answers.length);
-    const k = Math.floor(Math.random() * opts.length)
-    for (let i = 0; i < 1; i++) {
-        num1 = answers[j][0];
-        num2 = answers[j][1];
-        signOp = opts[k]
-        result = eval(`${num1} ${signOp} ${num2}`);
-        question.innerHTML = num1 + opts[k] + num2 + " = ";
+    const j = Math.floor(Math.random() * questions.length);
+    num1 = questions[j][0];
+    num2 = questions[j][1];
+    signOp = operator.value;
+    result = eval(`${num1} ${signOp} ${num2}`);
+    question.innerHTML = num1 + signOp + num2 + " = ";
+
+    if (operator.value === "*") {
+
     }
 }
 
+
+pickRange();
 myFunc()
+
 
 
 const btnCheck = document.getElementById("btn");
@@ -54,10 +79,12 @@ btnCheck.addEventListener("click", function () {
         score = 0;
     }
     generateResult(input);
-    myFunc();
     document.getElementById("submit").value = "";
     document.getElementById("score-show").innerHTML = totalscore;
+    pickRange()
+    myFunc()
     saveScore();
+
 });
 
 
@@ -97,7 +124,6 @@ function generateResult() {
     divAdd.appendChild(correct);
     divAdd.appendChild(givenAnswer);
     divAdd.appendChild(scoreGiven);
-
 }
 
 
@@ -114,8 +140,17 @@ function saveScore() {
     const score = +document.querySelector("#score-show").innerHTML;
     localStorage.setItem('score', JSON.stringify(score));
 
+    const rowArr = [];
 
+    const rows = document.querySelectorAll(".result-add");
+    for (const row of rows) {
+        rowArr.push(row.innerHTML);
+    }
+
+    localStorage.setItem("res", JSON.stringify(rowArr));
+    console.log(rowArr);
 }
+
 
 function init() {
     if (localStorage.score) {
@@ -124,5 +159,24 @@ function init() {
         document.querySelector("#score-show").innerHTML = "Your last score was " + scores;
     }
 
+
+
+    if (localStorage.res) {
+        const rows = JSON.parse(localStorage.res);
+
+        for (const row of rows) {
+            const div = document.createElement("div");
+            div.innerHTML = row;
+            div.classList.add("result-add")
+            document.querySelector("#add-result").appendChild(div)
+        }
+
+    }
 }
 
+init()
+
+// const div = document.createElement("div");
+// div.classList.add("result-add");
+// div.innerHTML = rows
+// document.querySelector("#add-result").appendChild(div);
