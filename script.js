@@ -1,6 +1,3 @@
-
-
-
 const question = document.querySelector("#show-qst");
 
 let score = 0;
@@ -40,22 +37,41 @@ function pickRange() {
 
 
 function myFunc() {
-    const j = Math.floor(Math.random() * questions.length);
-    num1 = questions[j][0];
-    num2 = questions[j][1];
     signOp = operator.value;
-    result = eval(`${num1} ${signOp} ${num2}`);
-    question.innerHTML = num1 + signOp + num2 + " = ";
+    if (signOp === "+" || signOp === "-") {
 
-    if (operator.value === "*") {
+        document.querySelector("#range").style.display = "block";
+        document.querySelector("#range-leb").style.display = "block";
 
+
+        const j = Math.floor(Math.random() * questions.length);
+        num1 = questions[j][0];
+        num2 = questions[j][1];
+
+        result = eval(`${num1} ${signOp} ${num2}`);
+        question.innerHTML = num1 + signOp + num2 + " = ";
     }
+
+
+    const k = Math.floor(Math.random() * multi.length);
+    let multiProb = multi[k];
+
+    if (signOp === "*") {
+        document.querySelector("#range").style.display = "none";
+        document.querySelector("#range-leb").style.display = "none";
+
+        num1 = multiProb[0]
+        num2 = multiProb[1]
+        result = eval(`${num1} ${signOp} ${num2}`);
+        question.innerHTML = num1 + signOp + num2 + " = ";
+    }
+
+
 }
 
 
 pickRange();
 myFunc()
-
 
 
 const btnCheck = document.getElementById("btn");
@@ -107,8 +123,6 @@ function generateResult() {
     givenAnswer.innerHTML = input;
     scoreGiven.innerHTML = score;
 
-
-
     if (isCorrect === true) {
         givenAnswer.style.color = "#2BD400";
     } else {
@@ -118,7 +132,6 @@ function generateResult() {
     if (input === "") {
         givenAnswer.innerHTML = "Empty ";
     }
-
 
     divAdd.appendChild(probelm);
     divAdd.appendChild(correct);
@@ -139,16 +152,6 @@ let gameHistory = [];
 function saveScore() {
     const score = +document.querySelector("#score-show").innerHTML;
     localStorage.setItem('score', JSON.stringify(score));
-
-    const rowArr = [];
-
-    const rows = document.querySelectorAll(".result-add");
-    for (const row of rows) {
-        rowArr.push(row.innerHTML);
-    }
-
-    localStorage.setItem("res", JSON.stringify(rowArr));
-    console.log(rowArr);
 }
 
 
@@ -158,25 +161,9 @@ function init() {
 
         document.querySelector("#score-show").innerHTML = "Your last score was " + scores;
     }
-
-
-
-    if (localStorage.res) {
-        const rows = JSON.parse(localStorage.res);
-
-        for (const row of rows) {
-            const div = document.createElement("div");
-            div.innerHTML = row;
-            div.classList.add("result-add")
-            document.querySelector("#add-result").appendChild(div)
-        }
-
-    }
 }
 
 init()
 
-// const div = document.createElement("div");
-// div.classList.add("result-add");
-// div.innerHTML = rows
-// document.querySelector("#add-result").appendChild(div);
+
+

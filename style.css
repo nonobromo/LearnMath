@@ -20,14 +20,14 @@ body {
 }
 
 .container {
-    width: 1200px;
+    width: 1400px;
     position: absolute;
     inset: 0;
     margin: auto;
 }
 
 .heading {
-    width: 1200px;
+    width: 1400px;
     text-align: center;
     color: #0019FF;
     font-size: 60px;
@@ -98,7 +98,7 @@ body>div>div.calc-area>div.operator-area>select:nth-child(4) {
 }
 
 .score-show {
-    width: 1200px;
+    width: 1400px;
     height: 40px;
     display: flex;
     justify-content: center;
@@ -124,7 +124,7 @@ body>div>div.calc-area>div.operator-area>select:nth-child(4) {
 }
 
 .result-stats {
-    width: 1200px;
+    width: 1400px;
     height: 30px;
     display: flex;
     justify-content: space-between;
@@ -133,7 +133,7 @@ body>div>div.calc-area>div.operator-area>select:nth-child(4) {
 
 h3,
 span {
-    width: 300px;
+    width: 350px;
     font-size: 1.5rem;
     margin-top: 20px;
     text-align: center;
@@ -141,7 +141,7 @@ span {
 
 
 .result-add {
-    width: 1200px;
+    width: 1400px;
     height: 30px;
     display: flex;
     justify-content: space-around;
@@ -152,7 +152,7 @@ span {
 @media screen and (min-width:280px) and (max-width:1200px) {
 
     .container {
-        width: 80vw;
+        width: 300px;
         height: 100vh;
         margin: auto;
     }
@@ -162,6 +162,14 @@ span {
         font-size: 30px;
         margin: auto;
         margin-top: 60px;
+    }
+
+    .operator-area {
+        width: 300px;
+    }
+
+    .operator-area>label {
+        font-size: 16px;
     }
 
     .calc-area {

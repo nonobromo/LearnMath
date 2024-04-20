@@ -44,10 +44,17 @@ for (let l = 0; l < 50; l++) {
 }
 
 
+
+//Creating a multiplucation table problems array
+
 let multi = [];
 
 for (let i = 1; i <= 10; i++) {
     for (let j = 1; j <= 10; j++) {
-        multi.push([[i], [j]]);
+        multi.push([i, j]);
     }
 }
+
+multi = [...multi];
+
+
