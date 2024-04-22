@@ -25,7 +25,7 @@ function pickRange() {
         questions = questions = [...range1];
     } else if (rangeCheck.value === "5-10") {
         questions = questions = [...range2];
-    } else if (rangeCheck === "10-15") {
+    } else if (rangeCheck.value === "10-15") {
         questions = questions.value = [...range3];
     } else if (rangeCheck.value === "15-20") {
         questions = questions = [...range4];
@@ -65,8 +65,6 @@ function myFunc() {
         result = eval(`${num1} ${signOp} ${num2}`);
         question.innerHTML = num1 + signOp + num2 + " = ";
     }
-
-
 }
 
 
