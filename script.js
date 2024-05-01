@@ -6,8 +6,6 @@ let totalscore = 0;
 let num1 = 0;
 let num2 = 0;
 
-
-
 let isCorrect = false;
 let showCorrect;
 
@@ -17,7 +15,6 @@ let questions = [];
 
 let operator = document.getElementById("operator");
 let rangeCheck = document.getElementById("range");
-
 
 
 function pickRange() {
@@ -32,8 +29,6 @@ function pickRange() {
     }
     myFunc()
 }
-
-
 
 
 function myFunc() {
@@ -62,6 +57,19 @@ function myFunc() {
 
         num1 = multiProb[0]
         num2 = multiProb[1]
+        result = eval(`${num1} ${signOp} ${num2}`);
+        question.innerHTML = num1 + signOp + num2 + " = ";
+    }
+
+    const divIndex = Math.floor(Math.random() * multiArr.length);
+    let divProb = multiArr[divIndex]
+
+    if (signOp === "/") {
+        document.querySelector("#range").style.display = "none";
+        document.querySelector("#range-leb").style.display = "none";
+
+        num1 = divProb[0];
+        num2 = divProb[1];
         result = eval(`${num1} ${signOp} ${num2}`);
         question.innerHTML = num1 + signOp + num2 + " = ";
     }
@@ -98,9 +106,7 @@ btnCheck.addEventListener("click", function () {
     pickRange()
     myFunc()
     saveScore();
-
 });
-
 
 
 function generateResult() {
