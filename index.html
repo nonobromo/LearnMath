@@ -16,14 +16,14 @@
         <div class="calc-area">
             <div class="operator-area">
                 <label for="">Operator</label>
-                <select id="operator" oninput="myFunc()">
+                <select id="operator">
                     <option value="+">+</option>
                     <option value="-">-</option>
                     <option value="*">*</option>
                     <option value="/">/</option>
                 </select>
                 <label for="" id="range-leb">Number Range</label>
-                <select id="range" oninput="pickRange()">
+                <select id="range" class="range-input">
                     <option>1-5</option>
                     <option>5-10</option>
                     <option>10-15</option>
@@ -35,7 +35,7 @@
                 <input type="number" id="submit">
                 <p id="show-qst"></p>
             </div>
-
+            <button class="clear-btn">Clear History</button>
         </div>
         <div class="score-show">
             <p id="score-show"> </p>

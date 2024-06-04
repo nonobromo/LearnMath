@@ -36,7 +36,7 @@ body {
 
 .calc-area {
     background-color: #DFECFF;
-    min-height: 200px;
+    min-height: 250px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -97,6 +97,17 @@ body>div>div.calc-area>div.operator-area>select:nth-child(4) {
     font-size: 40px;
 }
 
+.calc-area>.clear-btn {
+    width: 120px;
+    height: 30px;
+    background-color: #0019FF;
+    color: white;
+    border-radius: 12px;
+    font-size: 16px;
+    border: none;
+}
+
+
 .score-show {
     width: 1400px;
     height: 40px;
@@ -152,20 +163,25 @@ span {
 @media screen and (min-width:280px) and (max-width:1200px) {
 
     .container {
-        width: 300px;
+        width: 330px;
         height: 100vh;
         margin: auto;
     }
 
     .heading {
-        width: 300px;
+        width: 330px;
         font-size: 30px;
         margin: auto;
         margin-top: 60px;
     }
 
     .operator-area {
-        width: 300px;
+        width: 330px;
+        padding: 5px;
+    }
+
+    .operator-area>input {
+        width: 105px;
     }
 
     .operator-area>label {
@@ -173,7 +189,7 @@ span {
     }
 
     .calc-area {
-        width: 300px;
+        width: 330px;
         margin: auto;
         display: flex;
         justify-content: space-around;
@@ -203,13 +219,13 @@ span {
     }
 
     .score-show {
-        width: 300px;
+        width: 330px;
         margin: auto;
         margin-top: 10px;
     }
 
     .result-stats {
-        width: 300px;
+        width: 330px;
         margin: auto;
     }
 
@@ -220,7 +236,7 @@ span {
     }
 
     .result-add {
-        width: 300px;
+        width: 330px;
         margin: auto;
         margin-top: 20px;
     }

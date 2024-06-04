@@ -1,5 +1,5 @@
 const question = document.querySelector("#show-qst");
-
+const btnReset = document.querySelector(".clear-btn");
 let score = 0;
 let totalscore = 0;
 
@@ -17,6 +17,11 @@ let operator = document.getElementById("operator");
 let rangeCheck = document.getElementById("range");
 
 
+//Number ranges for addition and subtraction
+rangeCheck.addEventListener("input", pickRange);
+operator.addEventListener("input", randProblem);
+btnReset.addEventListener("click", clearHistory);
+
 function pickRange() {
     if (rangeCheck.value === "1-5") {
         questions = questions = [...range1];
@@ -27,11 +32,11 @@ function pickRange() {
     } else if (rangeCheck.value === "15-20") {
         questions = questions = [...range4];
     }
-    myFunc()
+    randProblem()
 }
 
-
-function myFunc() {
+//Creates A Random problem to solve based on the operator that was chosen
+function randProblem() {
     signOp = operator.value;
     if (signOp === "+" || signOp === "-") {
 
@@ -75,13 +80,11 @@ function myFunc() {
     }
 }
 
-
 pickRange();
-myFunc()
-
+randProblem()
 
 const btnCheck = document.getElementById("btn");
-
+//Clicking on this button checks if the user has answered correctly and generets the result below in the history area
 btnCheck.addEventListener("click", function () {
     let input = document.getElementById("submit").value;
     let btnCheck = document.getElementById("btn");
@@ -102,12 +105,11 @@ btnCheck.addEventListener("click", function () {
     }
     generateResult(input);
     document.getElementById("submit").value = "";
-    document.getElementById("score-show").innerHTML = totalscore;
+    document.getElementById("score-show").innerHTML = `Score: ${totalscore}`;
     pickRange()
-    myFunc()
+    randProblem()
     saveScore();
 });
-
 
 function generateResult() {
     let input = document.getElementById("submit").value;
@@ -132,15 +134,26 @@ function generateResult() {
     } else {
         givenAnswer.style.color = "#F28F1A"
     }
-
     if (input === "") {
         givenAnswer.innerHTML = "Empty ";
     }
-
     divAdd.appendChild(probelm);
     divAdd.appendChild(correct);
     divAdd.appendChild(givenAnswer);
     divAdd.appendChild(scoreGiven);
+}
+
+//Clears History and resets Game Score
+
+function clearHistory() {
+    const historyRows = document.querySelectorAll(".result-add");
+
+    for (const history of historyRows) {
+        history.remove();
+    }
+    totalscore = 0;
+    document.querySelector("#score-show").innerHTML = `Score: ${totalscore}`
+    localStorage.clear();
 }
 
 
@@ -150,12 +163,10 @@ function statusUpdate() {
     btnCheck.style.transition = "400ms";
 }
 
-
-let gameHistory = [];
-
+//Saves the last score you reached.
 function saveScore() {
-    const score = +document.querySelector("#score-show").innerHTML;
-    localStorage.setItem('score', JSON.stringify(score));
+
+    localStorage.setItem('score', JSON.stringify(totalscore));
 }
 
 
